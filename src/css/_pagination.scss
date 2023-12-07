@@ -1,0 +1,69 @@
+.ui-pagination-container {
+    height: 30px;
+
+    line-height: 30px;
+}
+
+.ui-pagination-container .ui-pagination-page-item {
+    font-size: 14px;
+    padding: 4px 10px;
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    margin: 0 3px;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.ui-pagination-container .ui-pagination-page-item:hover {
+    border-color: #1F6E78;
+    color: #1F6E78;
+    text-decoration: none;
+}
+
+.ui-pagination-container .ui-pagination-page-item.active {
+    background: #1F6E78;
+    border-color: #1F6E78;
+    color: #fff;
+    cursor: default;
+}
+
+$font-size-base: 75; //设计稿wdith/10
+
+
+@function rem($px) {
+    @return calc($px / $font-size-base)+rem;
+}
+
+@media screen and (max-width:800px) {
+    .ui-pagination-container {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: rem(60);
+        white-space: nowrap;
+        line-height: rem(60);
+    }
+
+    .ui-pagination-container .ui-pagination-page-item {
+        font-size: rem(24);
+        padding: rem(8) rem(20);
+        background: #fff;
+        border: 1px solid #e9e9e9;
+        margin: 0 rem(6);
+        text-decoration: none;
+        border-radius: rem(4);
+    }
+
+    .ui-pagination-container .ui-pagination-page-item:hover {
+        border-color: #1F6E78;
+        color: #1F6E78;
+        text-decoration: none;
+    }
+
+    .ui-pagination-container .ui-pagination-page-item.active {
+        background: #1F6E78;
+        border-color: #1F6E78;
+        color: #fff;
+        cursor: default;
+    }
+}

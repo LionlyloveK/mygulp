@@ -1,0 +1,183 @@
+@mixin bg-image($url, $size: contain, $position: center) {
+    background-image: url($url);
+    background-size: $size;
+    background-position: $position;
+    background-repeat: no-repeat;
+}
+
+@mixin myyichu($height: 50px, $bgc: #fff) {
+    position: relative;
+    height: $height;
+    overflow: hidden;
+
+    &::after {
+        content: "\02026";
+        font-weight: bold;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 0 10px 1px 45px;
+        background: -webkit-linear-gradient(right, rgba(255, 255, 255, 0), $bgc 55%);
+        background: -o-linear-gradient(right, rgba(255, 255, 255, 0), $bgc 55%);
+        background: -moz-linear-gradient(right, rgba(255, 255, 255, 0), $bgc 55%);
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), $bgc 55%);
+    }
+}
+
+@mixin yichuduo($line: 2) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    text-align: justify;
+}
+
+@mixin yichu {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin margin($mt: null, $mb: null, $ml: null, $mr: null, $m: null) {
+    margin-top: $mt;
+    margin-bottom: $mb;
+    margin-left: $ml;
+    margin-right: $mr;
+    margin: $m;
+}
+
+@mixin padding($pt: null, $pb: null, $pl: null, $pr: null, $p: null) {
+    padding-top: $pt;
+    padding-bottom: $pb;
+    padding-left: $pl;
+    padding-right: $pr;
+    padding: $p;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                     布局                                     */
+/* -------------------------------------------------------------------------- */
+
+
+// 清浮动
+@mixin clearfix() {
+
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin hidden() {
+    display: none !important;
+    visibility: hidden;
+}
+
+
+@mixin center() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+@mixin flex($type: null) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @if $type==center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    @if $type==col {
+        flex-direction: column;
+        align-items: stretch;
+
+    }
+}
+
+
+@mixin triangle($direction, $size, $borderColor) {
+    @extend %triangle-basic;
+
+    @if $direction==top {
+        border-bottom: $size solid $borderColor;
+        border-left: $size dashed transparent;
+        border-right: $size dashed transparent;
+    }
+
+    @else if $direction==right {
+        border-left: $size solid $borderColor;
+        border-top: $size dashed transparent;
+        border-bottom: $size dashed transparent;
+    }
+
+    @else if $direction==bottom {
+        border-top: $size solid $borderColor;
+        border-left: $size dashed transparent;
+        border-right: $size dashed transparent;
+    }
+
+    @else if $direction==left {
+        border-right: $size solid $borderColor;
+        border-top: $size dashed transparent;
+        border-bottom: $size dashed transparent;
+    }
+}
+
+@mixin shadow($color: #cecece) {
+    box-shadow: -1px -1px 11px -2px $color;
+}
+
+@mixin ellipsis() {
+    @extend %ellipsis-basic;
+}
+
+@mixin ellipsis-lines($line: 2) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+@mixin black-alpha($bgcolor: rgba(0, 0, 0, 0.7)) {
+    background-color: $bgcolor;
+    color: #fff;
+}
+
+@mixin min-height($height) {
+    min-height: $height;
+    height: auto !important;
+}
+
+@mixin fixed($pos: bottom) {
+    position: fixed;
+    left: 0;
+    right: 0;
+
+    @if $pos==bottom {
+        bottom: 0;
+    }
+
+    @else if $pos==top {
+        top: 0;
+    }
+}
